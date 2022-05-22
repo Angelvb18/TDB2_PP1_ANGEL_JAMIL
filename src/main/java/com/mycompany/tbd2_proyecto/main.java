@@ -20,7 +20,7 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
-        MongoClient mongo = crearConexion();
+        /*MongoClient mongo = crearConexion();
 
         MongoDatabase data = mongo.getDatabase("Proyecto");
         System.out.println("Get Database is successful");
@@ -40,7 +40,7 @@ public class main extends javax.swing.JFrame {
         doc2.append("Subscribers", 12345);
         doc2.append("Genre", "Anime");
         collection.insertOne(doc2);
-        System.out.println("Insert is completed");
+        System.out.println("Insert is completed");*/
 
     }
 
@@ -59,11 +59,11 @@ public class main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 541, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 348, Short.MAX_VALUE)
         );
 
         pack();
