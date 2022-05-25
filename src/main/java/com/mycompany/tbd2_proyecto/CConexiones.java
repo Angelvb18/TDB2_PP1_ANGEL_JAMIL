@@ -4,10 +4,14 @@
  */
 package com.mycompany.tbd2_proyecto;
 
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+
 
 /**
  *
@@ -45,15 +49,15 @@ public class CConexiones {
        doc.append("NomDev",team.getNomDev());
        String Lenguajes = "";
         for (int i = 0; i < team.getLenguajes().size(); i++) {
-            Lenguajes+=team.getLenguajes();
-            if(i!= team.getLenguajes().size()){
+            Lenguajes+=team.getLenguajes().get(i);
+            if(i!= team.getLenguajes().size()-1){
                 Lenguajes+=",";
             }
         }
         doc.append("Lenguajes", Lenguajes);
         String Tecnologias = "";
         for (int i = 0; i < team.getTecnologias().size(); i++) {
-            Tecnologias+=team.getTecnologias();
+            Tecnologias+=team.getTecnologias().get(i);
             if(i!= team.getTecnologias().size()-1){
                 Tecnologias+=",";
             }
@@ -94,6 +98,15 @@ public class CConexiones {
 
         System.out.println("Conexion Establecida");
     }
-
+public  void mostrarColeccionDesarrolaodres() {
+        DB db = mongo.getDB("Proyecto");
+        DBCollection colec = db.getCollection("Desarrolaodres");
+        
+        DBCursor cursor = colec.find();
+        
+        while(cursor.hasNext()) {
+            System.out.println("* "+ cursor.next().get("idDev") + " - " + cursor.curr().get("NomDev"));
+        }
+    }
     
 }
