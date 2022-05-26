@@ -1097,9 +1097,9 @@ public class main extends javax.swing.JFrame {
             jt_QABugs.setModel(conexion.ModelTableBugsQA());
             jt_QA_Proyectos.setModel(conexion.ModelTableProyectosQA());
         } else if (jt_usserlogin.getText().equals("dev")){
-            jd_QA.pack();
-            jd_QA.setLocationRelativeTo(this);
-            jd_QA.setVisible(true);
+            jd_Developper1.pack();
+            jd_Developper1.setLocationRelativeTo(this);
+            jd_Developper1.setVisible(true);
             jt_Devs.setModel(conexion.ModelTableDevs());
         } else {
             JOptionPane.showMessageDialog(this, "Contraseña Incorrecta!");
