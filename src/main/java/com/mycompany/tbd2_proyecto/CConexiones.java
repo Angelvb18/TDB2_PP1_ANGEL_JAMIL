@@ -125,6 +125,17 @@ public DefaultComboBoxModel DesarroladoresComboModel(){
         }
     return modelo;
 }
+public DefaultComboBoxModel ProyectosComboModel(){
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    DB db = mongo.getDB("Proyecto");
+        DBCollection colec = db.getCollection("Proyecto_Software");
+        DBCursor cursor = colec.find();
+        while(cursor.hasNext()) {
+            
+            modelo.addElement(cursor.next().get("_id")+"");
+        }
+    return modelo;
+}
 public DefaultTableModel ModeloTablaproyectosf(){
     DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
@@ -320,5 +331,59 @@ public  void actualizarDocumento(String coleccion, String id ,String Atributo , 
             }
         }
         return false;
+    }
+    public  String buscarPorObjectIDNombre( String coleccion, String valor,String Atributo) {
+        DB db = mongo.getDB("Proyecto");
+        DBCollection colect = db.getCollection(coleccion);
+        String result="";
+        // CREAMOS LA CONSULTA CON EL CAMPO NOMBRE
+        BasicDBObject consulta = new BasicDBObject();
+        consulta.put("_id", new ObjectId(valor));
+        
+        // BUSCA Y MUESTRA TODOS LOS DOCUMENTOS QUE COINCIDAN CON LA CONSULTA
+        DBCursor cursor = colect.find(consulta);
+        while(cursor.hasNext()) {
+             result = cursor.next().get(Atributo)+"";
+             break;
+        }
+        return result;
+    }
+    public DefaultComboBoxModel DesarroladoresComboModelObjectId(){
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    DB db = mongo.getDB("Proyecto");
+        DBCollection colec = db.getCollection("Desarrolaodres");
+        DBCursor cursor = colec.find();
+        while(cursor.hasNext()) {
+            
+            modelo.addElement(cursor.next().get("_id")+"");
+        }
+    return modelo;
+}
+    public DefaultTableModel BugsProyecto(String name){
+        DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Codigo", "Descripcion", "CodigoProyecto", "NvlUrgencia", "Estado"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+            };
+        };
+        DB db = mongo.getDB("Proyecto");
+        DBCollection colect = db.getCollection("Bugs");
+        
+        // CREAMOS LA CONSULTA CON EL CAMPO NOMBRE
+        BasicDBObject consulta = new BasicDBObject();
+        consulta.put("idPro", name);
+        
+        // BUSCA Y MUESTRA TODOS LOS DOCUMENTOS QUE COINCIDAN CON LA CONSULTA
+        DBCursor cursor = colect.find(consulta);
+        while(cursor.hasNext()) {
+             Object[] nrow = {cursor.next().get("_id"), cursor.curr().get("descrip"), cursor.curr().get("idPro"), cursor.curr().get("NvlSOS"),cursor.curr().get("Estado")};
+              modelo.addRow(nrow);
+             
+        }
+        return modelo;
     }
 }

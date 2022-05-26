@@ -16,7 +16,7 @@ public class Team {
     private String NomDev;
     private ArrayList<String> Lenguajes;
     private ArrayList<String> Tecnologias;
-
+    private  ArrayList<String> BugsAsignados;
     public Team(int idDev, String NomDev, ArrayList<String> Lenguajes, ArrayList<String> Tecnologias) {
         this.idDev = idDev;
         this.NomDev = NomDev;

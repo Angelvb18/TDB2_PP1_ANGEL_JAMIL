@@ -39,6 +39,7 @@ public class main extends javax.swing.JFrame {
         
         initComponents();
         Graficcar();
+        InfoInicila();
         /*MongoClient mongo = crearConexion();
 
         MongoDatabase data = mongo.getDatabase("Proyecto");
@@ -77,10 +78,14 @@ public class main extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jt_AsiganrBug = new javax.swing.JTable();
         jButton14 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jc_BugsAsignar = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        jc_AsignarDesarroladores = new javax.swing.JComboBox<>();
+        jl_NombreProyecto = new javax.swing.JLabel();
+        jl_NombreDesaAsignar = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -90,6 +95,7 @@ public class main extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         jd_CretaeDevellopper = new javax.swing.JDialog();
         jLabel4 = new javax.swing.JLabel();
         jt_NombreDev = new javax.swing.JTextField();
@@ -107,10 +113,6 @@ public class main extends javax.swing.JFrame {
         js_codigoPro = new javax.swing.JSpinner();
         jLabel13 = new javax.swing.JLabel();
         jt_NombreProyecto = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jd_DateInicio = new com.toedter.calendar.JDateChooser();
-        jd_DateFinalizacion = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
         jc_ListaDevelopperCreate = new javax.swing.JComboBox<>();
         jButton17 = new javax.swing.JButton();
@@ -173,7 +175,7 @@ public class main extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Asignar Bugs");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jt_AsiganrBug.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -184,13 +186,41 @@ public class main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jt_AsiganrBug);
 
-        jButton14.setText("jButton14");
+        jButton14.setText("Asignar");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
 
         jLabel17.setText("Proyecto");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jc_BugsAsignar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jc_BugsAsignar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jc_BugsAsignarMouseClicked(evt);
+            }
+        });
+        jc_BugsAsignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jc_BugsAsignarActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setText("Desarroladores");
+
+        jc_AsignarDesarroladores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jc_AsignarDesarroladores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jc_AsignarDesarroladoresActionPerformed(evt);
+            }
+        });
+
+        jl_NombreProyecto.setText("jLabel19");
+
+        jl_NombreDesaAsignar.setText("jLabel19");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -198,15 +228,24 @@ public class main extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jc_BugsAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jl_NombreProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addGap(18, 18, 18)
+                        .addComponent(jc_AsignarDesarroladores, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jl_NombreDesaAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -217,12 +256,18 @@ public class main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jc_BugsAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_NombreProyecto))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jc_AsignarDesarroladores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_NombreDesaAsignar))
+                .addGap(37, 37, 37)
                 .addComponent(jButton14)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -239,7 +284,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
@@ -333,6 +378,13 @@ public class main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton13.setText("Actualizar");
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_AdminLayout = new javax.swing.GroupLayout(jd_Admin.getContentPane());
         jd_Admin.getContentPane().setLayout(jd_AdminLayout);
         jd_AdminLayout.setHorizontalGroup(
@@ -341,12 +393,17 @@ public class main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jd_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AdminLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(223, 223, 223))
-                    .addComponent(jll_Grafica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                        .addGroup(jd_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AdminLayout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(223, 223, 223))
+                            .addComponent(jll_Grafica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AdminLayout.createSequentialGroup()
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -358,7 +415,9 @@ public class main extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jd_AdminLayout.createSequentialGroup()
                         .addComponent(jll_Grafica, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addGroup(jd_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -464,10 +523,6 @@ public class main extends javax.swing.JFrame {
 
         jLabel13.setText("Nombre del proyecto");
 
-        jLabel14.setText("Fecha de inicio");
-
-        jLabel15.setText("Fecha de finalización");
-
         jLabel16.setText("Desarrollador");
 
         jc_ListaDevelopperCreate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -493,67 +548,45 @@ public class main extends javax.swing.JFrame {
             .addGroup(jd_CreateProyectoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_CreateProyectoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jd_DateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(113, 113, 113))
-                    .addGroup(jd_CreateProyectoLayout.createSequentialGroup()
-                        .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jd_CreateProyectoLayout.createSequentialGroup()
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(js_codigoPro, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jd_CreateProyectoLayout.createSequentialGroup()
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jt_NombreProyecto))))
-                            .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_CreateProyectoLayout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jc_ListaDevelopperCreate, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_CreateProyectoLayout.createSequentialGroup()
-                                        .addComponent(jLabel15)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jd_DateFinalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_CreateProyectoLayout.createSequentialGroup()
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(js_codigoPro, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_CreateProyectoLayout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jt_NombreProyecto))))
+                    .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jd_CreateProyectoLayout.createSequentialGroup()
+                            .addComponent(jLabel16)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jc_ListaDevelopperCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jd_CreateProyectoLayout.setVerticalGroup(
             jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_CreateProyectoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jd_CreateProyectoLayout.createSequentialGroup()
-                        .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(js_codigoPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jt_NombreProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel14))
-                    .addComponent(jd_DateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(js_codigoPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jd_DateFinalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
+                .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jt_NombreProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jd_CreateProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jc_ListaDevelopperCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton17)
-                .addGap(23, 23, 23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jl_PedirString_NOMBREVARIABLE.setText("jLabel4");
@@ -1147,10 +1180,10 @@ public class main extends javax.swing.JFrame {
                     nuevoContenido+=",";
                 }
             }
-        fechai = fi.format(jd_DateInicio.getDate());
-        fechaf = fi.format(jd_DateFinalizacion.getDate());
+        //fechai = fi.format(jd_DateInicio.getDate());
+        //fechaf = fi.format(jd_DateFinalizacion.getDate());
         conexion.CamBiarColletion("Proyecto_Software");
-        conexion.InsertarProyecto_Software(new Proyecto_Software((Integer)js_codigoPro.getValue(),jt_NombreProyecto.getText(),fechai,fechaf,
+        conexion.InsertarProyecto_Software(new Proyecto_Software((Integer)js_codigoPro.getValue(),jt_NombreProyecto.getText(),"N/A","N/A",
                 nuevoContenido));
     }//GEN-LAST:event_jButton17MouseClicked
 
@@ -1305,6 +1338,34 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jt_QA_ProyectosMouseClicked
 
+    private void jc_BugsAsignarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jc_BugsAsignarMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jc_BugsAsignarMouseClicked
+
+    private void jc_AsignarDesarroladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_AsignarDesarroladoresActionPerformed
+        // TODO add your handling code here:
+        jl_NombreDesaAsignar.setText("Nombre: "+conexion.buscarPorObjectIDNombre("Desarrolaodres",jc_AsignarDesarroladores.getItemAt(jc_AsignarDesarroladores.getSelectedIndex()), "NomDev"));
+    }//GEN-LAST:event_jc_AsignarDesarroladoresActionPerformed
+
+    private void jc_BugsAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_BugsAsignarActionPerformed
+        // TODO add your handling code here:
+        jl_NombreProyecto.setText("Nombre: "+conexion.buscarPorObjectIDNombre("Proyecto_Software",jc_BugsAsignar.getItemAt(jc_BugsAsignar.getSelectedIndex()), "NomPro"));
+        jt_AsiganrBug.setModel(conexion.BugsProyecto(jc_BugsAsignar.getItemAt(jc_BugsAsignar.getSelectedIndex())));
+    }//GEN-LAST:event_jc_BugsAsignarActionPerformed
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // TODO add your handling code here:
+        if(jt_AsiganrBug.isColumnSelected(NORMAL)){
+           // conexion.actualizarDocumento("Bugs", jt_AsiganrBug.getValueAt(jt_AsiganrBug.getSelectedRow() , 0)+"", "ListaBugs", jc_AsignarDesarroladores.getItemAt(jc_AsignarDesarroladores.getSelectedIndex()));
+        }
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        // TODO add your handling code here:
+       Graficcar();
+    }//GEN-LAST:event_jButton13MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1338,6 +1399,13 @@ public class main extends javax.swing.JFrame {
                 new main().setVisible(true);
             }
         });
+    }
+    public void InfoInicila(){
+        jc_BugsAsignar.setModel(conexion.ProyectosComboModel());
+        jl_NombreProyecto.setText("Nombre: "+conexion.buscarPorObjectIDNombre("Proyecto_Software",jc_BugsAsignar.getItemAt(jc_BugsAsignar.getSelectedIndex()), "NomPro"));
+        jc_AsignarDesarroladores.setModel(conexion.DesarroladoresComboModelObjectId());
+        jl_NombreDesaAsignar.setText("Nombre: "+conexion.buscarPorObjectIDNombre("Desarrolaodres",jc_AsignarDesarroladores.getItemAt(jc_AsignarDesarroladores.getSelectedIndex()), "NomDev"));
+        jt_AsiganrBug.setModel(conexion.BugsProyecto(jc_BugsAsignar.getItemAt(jc_BugsAsignar.getSelectedIndex())));
     }
     public void Graficcar(){
         int con_Asignados=0,con_Finalizados=0 , con_nuevo=0;
@@ -1398,6 +1466,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton17;
@@ -1409,16 +1478,14 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1450,7 +1517,8 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JComboBox<String> jc_AsignarDesarroladores;
+    private javax.swing.JComboBox<String> jc_BugsAsignar;
     private javax.swing.JComboBox<String> jc_Lenguajes;
     private javax.swing.JComboBox<String> jc_ListaDevelopperCreate;
     private javax.swing.JComboBox<String> jc_Listas;
@@ -1458,8 +1526,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JDialog jd_Admin;
     private javax.swing.JDialog jd_CreateProyecto;
     private javax.swing.JDialog jd_CretaeDevellopper;
-    private com.toedter.calendar.JDateChooser jd_DateFinalizacion;
-    private com.toedter.calendar.JDateChooser jd_DateInicio;
     private javax.swing.JDialog jd_Developper1;
     private javax.swing.JDialog jd_ListaDevelopper;
     private javax.swing.JDialog jd_ListarProyectoSoftware;
@@ -1467,12 +1533,15 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JDialog jd_PedirString;
     private javax.swing.JDialog jd_QA;
     private javax.swing.JLabel jl_Listas;
+    private javax.swing.JLabel jl_NombreDesaAsignar;
+    private javax.swing.JLabel jl_NombreProyecto;
     private javax.swing.JLabel jl_PedirString_NOMBREVARIABLE;
     private javax.swing.JLabel jll_Grafica;
     private javax.swing.JPopupMenu jp_OperacionesDevelopper;
     private javax.swing.JPopupMenu jp_OperacionesPS;
     private javax.swing.JSpinner js_Id;
     private javax.swing.JSpinner js_codigoPro;
+    private javax.swing.JTable jt_AsiganrBug;
     private javax.swing.JTable jt_Devs;
     private javax.swing.JTable jt_ListaDevelopper;
     private javax.swing.JTextField jt_NombreDev;
