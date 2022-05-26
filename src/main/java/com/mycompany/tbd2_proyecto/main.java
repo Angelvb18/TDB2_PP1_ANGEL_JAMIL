@@ -153,6 +153,7 @@ public class main extends javax.swing.JFrame {
         b_InicioReparacion1 = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         jt_Devs = new javax.swing.JTable();
+        jd_DateDev = new com.toedter.calendar.JDateChooser();
         jd_QA = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jButton15 = new javax.swing.JButton();
@@ -891,8 +892,18 @@ public class main extends javax.swing.JFrame {
         jScrollPane8.setViewportView(jt_bugs);
 
         b_BugFinalizado1.setText("Bug Finalizado");
+        b_BugFinalizado1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_BugFinalizado1MouseClicked(evt);
+            }
+        });
 
         b_InicioReparacion1.setText("Inicio De Reparacion");
+        b_InicioReparacion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_InicioReparacion1MouseClicked(evt);
+            }
+        });
 
         jt_Devs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -915,20 +926,20 @@ public class main extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane8)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                                .addComponent(b_InicioReparacion1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(b_BugFinalizado1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jd_DateDev, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(b_InicioReparacion1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(b_BugFinalizado1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -938,9 +949,11 @@ public class main extends javax.swing.JFrame {
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(b_InicioReparacion1)
-                    .addComponent(b_BugFinalizado1))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jd_DateDev, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(b_BugFinalizado1)
+                        .addComponent(b_InicioReparacion1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
@@ -950,7 +963,10 @@ public class main extends javax.swing.JFrame {
         jd_Developper1.getContentPane().setLayout(jd_Developper1Layout);
         jd_Developper1Layout.setHorizontalGroup(
             jd_Developper1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jd_Developper1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jd_Developper1Layout.setVerticalGroup(
             jd_Developper1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1329,9 +1345,15 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_DevsMouseClicked
 
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
-        Bug bug = new Bug(0, tf_descrip_bug.getText(), jt_QA_Proyectos.getValueAt(jt_QA_Proyectos.getSelectedRow(),0)+"", (Integer)sp_QA_Nvl.getValue(), "Nuevo", "N/A", "N/A");
-        conexion.CamBiarColletion("Bugs");
-        conexion.InsertarBug(bug);
+         try {
+            Bug bug = new Bug(0, tf_descrip_bug.getText(), jt_QA_Proyectos.getValueAt(jt_QA_Proyectos.getSelectedRow(),0)+"", (Integer)sp_QA_Nvl.getValue(), "Nuevo", "N/A", "N/A");
+            conexion.CamBiarColletion("Bugs");
+            conexion.InsertarBug(bug);
+            jt_QABugs.setModel(conexion.ModelTableBugsQA());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Seleccione un proyecto");
+        }
+        
     }//GEN-LAST:event_jButton15MouseClicked
 
     private void jt_QA_ProyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_QA_ProyectosMouseClicked
@@ -1365,6 +1387,16 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
        Graficcar();
     }//GEN-LAST:event_jButton13MouseClicked
+
+    private void b_BugFinalizado1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_BugFinalizado1MouseClicked
+        conexion.actualizarDocumento("Bugs", jt_bugs.getValueAt(jt_bugs.getSelectedRow(), 0) + "", "fecha_fin", "26/05/2022");
+        conexion.actualizarDocumento("Bugs", jt_bugs.getValueAt(jt_bugs.getSelectedRow(), 0) + "", "Estado", "Finalizado");
+    }//GEN-LAST:event_b_BugFinalizado1MouseClicked
+
+    private void b_InicioReparacion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_InicioReparacion1MouseClicked
+        String fecha = jd_DateDev.getDateFormatString();
+        conexion.actualizarDocumento("Bugs", jt_bugs.getValueAt(jt_bugs.getSelectedRow(), 0) + "", "fecha_incio", fecha);
+    }//GEN-LAST:event_b_InicioReparacion1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1526,6 +1558,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JDialog jd_Admin;
     private javax.swing.JDialog jd_CreateProyecto;
     private javax.swing.JDialog jd_CretaeDevellopper;
+    private com.toedter.calendar.JDateChooser jd_DateDev;
     private javax.swing.JDialog jd_Developper1;
     private javax.swing.JDialog jd_ListaDevelopper;
     private javax.swing.JDialog jd_ListarProyectoSoftware;
