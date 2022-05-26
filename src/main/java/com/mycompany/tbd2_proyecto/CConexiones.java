@@ -4,13 +4,17 @@
  */
 package com.mycompany.tbd2_proyecto;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 
 /**
@@ -87,7 +91,9 @@ public class CConexiones {
             }
         }
         doc.append("Fin_Bugs", bugs);
+        doc.append("Desarrolladores",proy.getTeamNombre());
          colection.insertOne(doc);
+         
         System.out.println("se inserto el proyecto");
     }
     public  void crearConexion() {
@@ -107,6 +113,80 @@ public  void mostrarColeccionDesarrolaodres() {
         while(cursor.hasNext()) {
             System.out.println("* "+ cursor.next().get("idDev") + " - " + cursor.curr().get("NomDev"));
         }
-    }
-    
+}
+public DefaultComboBoxModel DesarroladoresComboModel(){
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    DB db = mongo.getDB("Proyecto");
+        DBCollection colec = db.getCollection("Desarrolaodres");
+        DBCursor cursor = colec.find();
+        while(cursor.hasNext()) {
+            
+            modelo.addElement(cursor.next().get("NomDev"));
+        }
+    return modelo;
+}
+public DefaultTableModel ModeloTablaproyectosf(){
+    DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Codigo", "Nombre", "Inicio", "Fin"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+        };
+    DB db = mongo.getDB("Proyecto");
+        DBCollection colec = db.getCollection("Proyecto_Software");
+        
+        DBCursor cursor = colec.find();
+        
+        while(cursor.hasNext()) {
+            Object[] nrow ={cursor.next().get("_id"),cursor.curr().get("NomPro"),cursor.curr().get("Fecha_Inicio"),cursor.curr().get("Fecha_fin")};
+            modelo.addRow(nrow);
+        }
+    return modelo;
+}
+public DefaultTableModel ModeloTablaDevelopper(){
+    DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Codigo", "Nombre", "Lenguajes", "Tecnologias"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+        };
+    DB db = mongo.getDB("Proyecto");
+        DBCollection colec = db.getCollection("Desarrolaodres");
+        
+        DBCursor cursor = colec.find();
+        
+        while(cursor.hasNext()) {
+            Object[] nrow ={cursor.next().get("_id"),cursor.curr().get("NomDev"),cursor.curr().get("Lenguajes"),cursor.curr().get("Tecnologias")};
+            modelo.addRow(nrow);
+        }
+    return modelo;
+}
+public  void borrarDocumento( String coleccion, String id) {
+    DB db = mongo.getDB("Proyecto");
+    DBCollection colec = db.getCollection(coleccion);
+    colec.remove(new BasicDBObject().append("_id", new ObjectId(id)));
+}
+public  void actualizarDocumento(String coleccion, String id ,String Atributo , String valor) {
+        DB db = mongo.getDB("Proyecto");
+        DBCollection colec = db.getCollection(coleccion);
+        
+        // SENTENCIA CON LA INFORMACION A REMPLAZAR
+        BasicDBObject actualizar = new BasicDBObject();
+        actualizar.append("$set", new BasicDBObject().append(Atributo, valor));
+        
+        // BUSCA EL DOCUMENTO EN LA COLECCION
+        BasicDBObject buscarPorNombre = new BasicDBObject();
+        buscarPorNombre.append("_id", new ObjectId(id));
+        
+        // REALIZA EL UPDATE
+        colec.updateMulti(buscarPorNombre, actualizar);
+}
 }
