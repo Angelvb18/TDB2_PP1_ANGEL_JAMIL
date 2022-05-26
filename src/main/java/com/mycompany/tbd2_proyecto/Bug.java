@@ -12,13 +12,13 @@ public class Bug {
     
     private int idBug; 
     private String descrip; 
-    private int idPro; 
+    private String idPro; 
     private int NvlSOS;
     private String Estado;
     private String fecha_inicio;
     private String fecha_fin;
 
-    public Bug(int idBug, String descrip, int idPro, int NvlSOS, String Estado, String fecha_inicio, String fecha_fin) {
+    public Bug(int idBug, String descrip, String idPro, int NvlSOS, String Estado, String fecha_inicio, String fecha_fin) {
         this.idBug = idBug;
         this.descrip = descrip;
         this.idPro = idPro;
@@ -44,13 +44,15 @@ public class Bug {
         this.descrip = descrip;
     }
 
-    public int getIdPro() {
+    public String getIdPro() {
         return idPro;
     }
 
-    public void setIdPro(int idPro) {
+    public void setIdPro(String idPro) {
         this.idPro = idPro;
     }
+
+    
 
     public int getNvlSOS() {
         return NvlSOS;

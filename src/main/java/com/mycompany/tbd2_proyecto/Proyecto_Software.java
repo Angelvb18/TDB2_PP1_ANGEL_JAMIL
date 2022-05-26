@@ -19,7 +19,7 @@ public class Proyecto_Software {
     private Team equipo;
     private ArrayList<Bug> listaBugs;
     private ArrayList<Bug> listaFinBugs;
-
+    private String TeamNombre;
     public Proyecto_Software(int idPro, String NomPro, String fecha_inicio, String fecha_fin, Team equipo, ArrayList<Bug> listaBugs, ArrayList<Bug> listaFinBugs) {
         this.idPro = idPro;
         this.NomPro = NomPro;
@@ -28,6 +28,24 @@ public class Proyecto_Software {
         this.equipo = equipo;
         this.listaBugs = listaBugs;
         this.listaFinBugs = listaFinBugs;
+        TeamNombre = equipo.getNomDev();
+    }
+    public Proyecto_Software(int idPro, String NomPro, String fecha_inicio, String fecha_fin, String equipo) {
+        this.idPro = idPro;
+        this.NomPro = NomPro;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+        this.TeamNombre = equipo;
+        listaBugs = new ArrayList();
+        listaFinBugs = new ArrayList();
+    }
+
+    public String getTeamNombre() {
+        return TeamNombre;
+    }
+
+    public void setTeamNombre(String TeamNombre) {
+        this.TeamNombre = TeamNombre;
     }
 
     public int getIdPro() {
