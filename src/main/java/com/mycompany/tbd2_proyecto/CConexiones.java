@@ -249,10 +249,12 @@ public  void actualizarDocumento(String coleccion, String id ,String Atributo , 
             };
         };
         DB db = mongo.getDB("Proyecto");
-        DBCollection colec = db.getCollection("ProyectoSoftware");
+        DBCollection colec = db.getCollection("Proyecto_Software");
         DBCursor cursor = colec.find();
         while (cursor.hasNext()) {
-            if (BuscarAsignado(Name, (String) cursor.next().get("Equipo Desarrolladores"))) {
+            
+            if (BuscarAsignado(Name,  cursor.next().get("Desarrolladores")+"")) {
+                
                 Object[] nrow = {cursor.curr().get("_id"), cursor.curr().get("NomPro"), cursor.curr().get("fecha_inicio")};
                 modelo.addRow(nrow);
             }
@@ -298,8 +300,8 @@ public  void actualizarDocumento(String coleccion, String id ,String Atributo , 
         DBCollection colec = db.getCollection("Bugs");
         DBCursor cursor = colec.find();
         while (cursor.hasNext()) {
-            if (BuscarAsignado(id, (String) cursor.next().get("CodigoProyecto"))) {
-                Object[] nrow = {cursor.curr().get("_id"), cursor.curr().get("Descripcion"),cursor.curr().get("NvlUrgencia"), cursor.curr().get("FechaInicio"), cursor.curr().get("Estado")};
+            if (BuscarAsignado(id,  cursor.next().get("idPro")+"")) {
+                Object[] nrow = {cursor.curr().get("_id"), cursor.curr().get("descrip"),cursor.curr().get("NvlSOS"), cursor.curr().get("fecha_inicio"), cursor.curr().get("Estado")};
                 modelo.addRow(nrow);
             }
 
