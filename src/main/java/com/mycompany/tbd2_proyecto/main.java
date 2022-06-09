@@ -1394,8 +1394,14 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_b_BugFinalizado1MouseClicked
 
     private void b_InicioReparacion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_InicioReparacion1MouseClicked
-        String fecha = jd_DateDev.getDateFormatString();
-        conexion.actualizarDocumento("Bugs", jt_bugs.getValueAt(jt_bugs.getSelectedRow(), 0) + "", "fecha_incio", fecha);
+        SimpleDateFormat fi = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            String fecha = fi.format(jd_DateDev.getDate());
+            
+            conexion.actualizarDocumento("Bugs", jt_bugs.getValueAt(jt_bugs.getSelectedRow(), 0) + "", "fecha_inicio", fecha);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Seleccione El Bug");
+        }
     }//GEN-LAST:event_b_InicioReparacion1MouseClicked
 
     /**

@@ -188,7 +188,7 @@ public  void borrarDocumento( String coleccion, String id) {
 public  void actualizarDocumento(String coleccion, String id ,String Atributo , String valor) {
         DB db = mongo.getDB("Proyecto");
         DBCollection colec = db.getCollection(coleccion);
-        
+        System.out.println(id + " AQUI");
         // SENTENCIA CON LA INFORMACION A REMPLAZAR
         BasicDBObject actualizar = new BasicDBObject();
         actualizar.append("$set", new BasicDBObject().append(Atributo, valor));
@@ -218,7 +218,7 @@ public  void actualizarDocumento(String coleccion, String id ,String Atributo , 
         DBCollection colec = db.getCollection("Bugs");
         DBCursor cursor = colec.find();
         while (cursor.hasNext()) {
-            Object[] nrow = {cursor.next().get("_id"), cursor.curr().get("Descripcion"), cursor.curr().get("CodigoProyecto"), cursor.curr().get("NvlUrgencia"), cursor.curr().get("Estado")};
+            Object[] nrow = {cursor.next().get("_id"), cursor.curr().get("descrip"), cursor.curr().get("idPro"), cursor.curr().get("NvlSOS"), cursor.curr().get("Estado")};
             modelo.addRow(nrow);
         }
 
@@ -266,7 +266,7 @@ public  void actualizarDocumento(String coleccion, String id ,String Atributo , 
             
             if (BuscarAsignado(Name,  cursor.next().get("Desarrolladores")+"")) {
                 
-                Object[] nrow = {cursor.curr().get("_id"), cursor.curr().get("NomPro"), cursor.curr().get("fecha_inicio")};
+                Object[] nrow = {cursor.curr().get("_id"), cursor.curr().get("NomPro"), cursor.curr().get("Fecha_Inicio")};
                 modelo.addRow(nrow);
             }
         }
