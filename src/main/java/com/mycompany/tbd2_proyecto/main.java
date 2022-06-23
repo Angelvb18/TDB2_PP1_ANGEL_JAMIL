@@ -30,6 +30,9 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
@@ -199,6 +202,18 @@ public class main extends javax.swing.JFrame {
         jd_DecidirAgregarTec = new javax.swing.JDialog();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
+        jd_QMandarCorreo = new javax.swing.JDialog();
+        jLabel19 = new javax.swing.JLabel();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jd_RedactarCorreo = new javax.swing.JDialog();
+        jLabel24 = new javax.swing.JLabel();
+        jd_RCorreo = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jt_Rsubject = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ta_RMensaje = new javax.swing.JTextArea();
+        jButton22 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jt_usserlogin = new javax.swing.JTextField();
@@ -1288,6 +1303,106 @@ public class main extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        jLabel19.setText("¿Desea mandar un correo?");
+
+        jButton20.setText("Si");
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton20MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton20MouseEntered(evt);
+            }
+        });
+
+        jButton21.setText("No");
+        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton21MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_QMandarCorreoLayout = new javax.swing.GroupLayout(jd_QMandarCorreo.getContentPane());
+        jd_QMandarCorreo.getContentPane().setLayout(jd_QMandarCorreoLayout);
+        jd_QMandarCorreoLayout.setHorizontalGroup(
+            jd_QMandarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_QMandarCorreoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_QMandarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_QMandarCorreoLayout.createSequentialGroup()
+                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_QMandarCorreoLayout.setVerticalGroup(
+            jd_QMandarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_QMandarCorreoLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel19)
+                .addGap(18, 18, 18)
+                .addGroup(jd_QMandarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton20)
+                    .addComponent(jButton21))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        jLabel24.setText("Para:");
+
+        jLabel25.setText("Asunto");
+
+        ta_RMensaje.setColumns(20);
+        ta_RMensaje.setRows(5);
+        jScrollPane1.setViewportView(ta_RMensaje);
+
+        jButton22.setText("Enviar");
+        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton22MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_RedactarCorreoLayout = new javax.swing.GroupLayout(jd_RedactarCorreo.getContentPane());
+        jd_RedactarCorreo.getContentPane().setLayout(jd_RedactarCorreoLayout);
+        jd_RedactarCorreoLayout.setHorizontalGroup(
+            jd_RedactarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_RedactarCorreoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_RedactarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                    .addGroup(jd_RedactarCorreoLayout.createSequentialGroup()
+                        .addGroup(jd_RedactarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jd_RedactarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jd_RCorreo)
+                            .addComponent(jt_Rsubject, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_RedactarCorreoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jd_RedactarCorreoLayout.setVerticalGroup(
+            jd_RedactarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_RedactarCorreoLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jd_RedactarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jd_RCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_RedactarCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jt_Rsubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jButton22)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Nombre");
@@ -1611,6 +1726,9 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(jt_AsiganrBug.isColumnSelected(NORMAL)){
             conexion.actualizarDocumento("Bugs", jt_AsiganrBug.getValueAt(jt_AsiganrBug.getSelectedRow() , 0)+"", "ListaBugs", jc_AsignarDesarroladores.getItemAt(jc_AsignarDesarroladores.getSelectedIndex()));
+            jd_QMandarCorreo.pack();
+            jd_QMandarCorreo.setLocationRelativeTo(this);
+            jd_QMandarCorreo.setVisible(true);
         }
     }//GEN-LAST:event_jButton14MouseClicked
 
@@ -1712,6 +1830,33 @@ public class main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jc_LenguajesActionPerformed
 
+    private void jButton21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseClicked
+        // TODO add your handling code here:
+        jd_QMandarCorreo.dispose();
+    }//GEN-LAST:event_jButton21MouseClicked
+
+    private void jButton22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseClicked
+        // TODO add your handling code here:
+        CorreoE(jd_RCorreo.getText(), jt_Rsubject.getText(), ta_RMensaje.getText());
+        jd_RCorreo.setText("");
+        jt_Rsubject.setText("");
+        ta_RMensaje.setText("");
+        jd_RedactarCorreo.dispose();
+    }//GEN-LAST:event_jButton22MouseClicked
+
+    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
+        // TODO add your handling code here:
+        jd_QMandarCorreo.dispose();
+        jd_RedactarCorreo.pack();
+        jd_RedactarCorreo.setLocationRelativeTo(this);
+        jd_RedactarCorreo.setVisible(true);
+        
+    }//GEN-LAST:event_jButton20MouseClicked
+
+    private void jButton20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton20MouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -1747,6 +1892,7 @@ public class main extends javax.swing.JFrame {
         });
     }
     public void InfoInicila(){
+        
         jc_BugsAsignar.setModel(conexion.ProyectosComboModel());
         jl_NombreProyecto.setText("Nombre: "+conexion.buscarPorObjectIDNombre("Proyecto_Software",jc_BugsAsignar.getItemAt(jc_BugsAsignar.getSelectedIndex()), "NomPro"));
         jc_AsignarDesarroladores.setModel(conexion.DesarroladoresComboModelObjectId());
@@ -1820,14 +1966,42 @@ public class main extends javax.swing.JFrame {
         
         
     }
-    
-    /*public void CorreoE(){
+    public void CorreoE(String Destino, String subject, String Mensaje){
+        try {
             String correo = "angeljosevb12@gmail.com";
-            String contra = "tvqyhcipldfdhtiv";
-            String CorreDestino = "garciajamil69@gmail.com";
+            String contra = "figflzwhlbmmwint";
+            String CorreDestino = Destino;
             
-            Properties p = Pr
-    }*/
+            Properties p = new Properties();
+            p.put("mail.smtp.host", "smtp.gmail.com");
+            p.setProperty("mail.smtp.starttls.enable", "true");
+            p.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+            p.setProperty("mail.smtp.port","587");
+            p.setProperty("mail.smtp.user", correo);
+            p.setProperty("mail.smtp.auth", "true");
+            p.put("mail.smtp.host", "smtp.gmail.com");
+            p.put("mail.smtp.port", "465");
+            p.put("mail.smtp.auth", "true");
+            p.put("mail.smtp.starttls.enable", "true");
+            p.put("mail.smtp.starttls.required", "true");
+            p.put("mail.smtp.ssl.protocols", "TLSv1.2");
+            p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            Session s = Session.getDefaultInstance(p);
+            MimeMessage mensaje = new MimeMessage(s);
+            mensaje.setFrom(new InternetAddress(correo));
+            mensaje.addRecipient(Message.RecipientType.TO,new InternetAddress(CorreDestino));
+            mensaje.setSubject(subject);
+            mensaje.setText(Mensaje);
+            Transport t = s.getTransport("smtp");
+            t.connect(correo,contra);
+            t.sendMessage(mensaje,mensaje.getAllRecipients());
+            t.close();
+            JOptionPane.showMessageDialog(this, "Enviado");
+        } catch (MessagingException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }       
+   
     
     public static MongoClient crearConexion() {
         System.out.println("Prueba: ");
@@ -1854,6 +2028,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1871,11 +2048,14 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1899,6 +2079,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1928,6 +2109,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JDialog jd_Listas;
     private javax.swing.JDialog jd_PedirString;
     private javax.swing.JDialog jd_QA;
+    private javax.swing.JDialog jd_QMandarCorreo;
+    private javax.swing.JTextField jd_RCorreo;
+    private javax.swing.JDialog jd_RedactarCorreo;
     private javax.swing.JLabel jl_Listas;
     private javax.swing.JLabel jl_NombreDesaAsignar;
     private javax.swing.JLabel jl_NombreProyecto;
@@ -1946,6 +2130,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTable jt_ProyectoSoftware;
     private javax.swing.JTable jt_QABugs;
     private javax.swing.JTable jt_QA_Proyectos;
+    private javax.swing.JTextField jt_Rsubject;
     private javax.swing.JTable jt_bugs;
     private javax.swing.JTable jt_pSoftware;
     private javax.swing.JTextField jt_passUser;
@@ -1954,6 +2139,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField jt_ucCorreo;
     private javax.swing.JTextField jt_usserlogin;
     private javax.swing.JSpinner sp_QA_Nvl;
+    private javax.swing.JTextArea ta_RMensaje;
     private javax.swing.JTextField tf_descrip_bug;
     // End of variables declaration//GEN-END:variables
 ArrayList <String> Lenguajesaux;
