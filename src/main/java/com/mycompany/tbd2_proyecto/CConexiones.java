@@ -11,6 +11,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
@@ -385,5 +386,44 @@ public  void actualizarDocumento(String coleccion, String id ,String Atributo , 
              
         }
         return modelo;
+    }
+    public void InsertarUsuario(Usuario user){
+       doc = new Document("id_Desarrollador",user.getId_Desarrollador());
+       doc.append("Nombre",user.getNombre());
+        doc.append("Password", user.getPassword());
+        doc.append("Correo", user.getCorreo());
+        doc.append("Rol", user.getRol());
+         colection.insertOne(doc);
+        System.out.println("se inserto el Usuario");
+    }
+    
+    public String login(String coleccion , String correo, String pass ){
+        ArrayList<String> lista1 = new ArrayList();
+        ArrayList<String> lista2 = new ArrayList();
+        DB db = mongo.getDB("Proyecto");
+        DBCollection colect = db.getCollection(coleccion);
+        String result="";
+        // CREAMOS LA CONSULTA CON EL CAMPO NOMBRE
+        BasicDBObject consulta = new BasicDBObject();
+        BasicDBObject consulta2 = new BasicDBObject();
+        consulta.put("Correo", correo);
+        consulta2.put("Password", pass);
+        // BUSCA Y MUESTRA TODOS LOS DOCUMENTOS QUE COINCIDAN CON LA CONSULTA
+        DBCursor cursor = colect.find(consulta);
+        
+        while(cursor.hasNext()) {
+            lista1.add(cursor.next().get("_id")+"");
+        }
+        DBCursor cursor2 = colect.find(consulta2);
+        while(cursor2.hasNext()) {
+            lista2.add(cursor2.next().get("_id")+"");
+        }
+        for (int i = 0; i < lista1.size(); i++) {
+            if (lista2.contains(lista1.get(i)) == true) {
+                result = buscarPorObjectIDNombre("Usuario",lista1.get(i), "Rol");
+            }
+        }
+        System.out.println(result);
+        return result;
     }
 }
